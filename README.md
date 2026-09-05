@@ -36,3 +36,6 @@ You can also open `index.html` directly, though a local server is recommended fo
 - `index.html` - application markup and lesson content
 - `style.css` - layout, responsive styles, and visual design
 - `app.js` - navigation, dictionary search, kana charts, and quiz interactions
+
+## NOTE 
+- something something will update this more
