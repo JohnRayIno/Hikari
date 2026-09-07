@@ -4,10 +4,13 @@ const breadcrumbTitle = document.querySelector('#breadcrumb-title');
 const toast = document.querySelector('#toast');
 const sidebar = document.querySelector('.sidebar');
 const menuButton = document.querySelector('.menu-button');
-const pageTitles = { home: 'Overview', path: 'Learning path', practice: 'Practice', dictionary: 'Dictionary', kana: 'Kana chart', kanji: 'Kanji bank', grammar: 'Grammar guide', n5: 'N5 essentials', numbers: 'Numbers chart', time: 'Telling time', calendar: 'Calendar words', questions: 'Question words', frequency: 'Frequency words', demonstratives: 'This / That', contrast: 'But / However', or: 'Or / Alternatives', adjectives: 'Adjective lessons' };
+const sourceVerbSections = [...document.querySelectorAll('.verb-section')].filter((section) => !section.closest('#verbs-view'));
+sourceVerbSections.forEach((section) => { section.hidden = true; });
+const pageTitles = { home: 'Overview', path: 'Learning path', practice: 'Practice', dictionary: 'Dictionary', kana: 'Kana chart', kanji: 'Kanji bank', grammar: 'Grammar guide', n5: 'N5 essentials', numbers: 'Numbers chart', time: 'Telling time', calendar: 'Calendar words', questions: 'Question words', frequency: 'Frequency words', demonstratives: 'This / That', contrast: 'But / However', or: 'Or / Alternatives', adjectives: 'Adjective lessons', verbs: 'Verb lessons' };
 
 function showView(viewName) {
   views.forEach((view) => view.classList.toggle('active-view', view.id === `${viewName}-view`));
+  sourceVerbSections.forEach((section) => { section.hidden = viewName !== 'verbs'; });
   navItems.forEach((item) => item.classList.toggle('active', item.dataset.view === viewName));
   breadcrumbTitle.textContent = pageTitles[viewName] || 'Overview';
   window.scrollTo({ top: 0, behavior: 'smooth' });
